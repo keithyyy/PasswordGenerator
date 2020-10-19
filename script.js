@@ -10,6 +10,12 @@ const passwordSpecial = '';
 // Write password to the #password input
 function writePassword() {
   const passLength = prompt("How long would you like your password to be? :");
+
+  if (passLength < 8 || passLength > 28) {
+    alert("Password has to be within 8 - 28 characters");
+    writePassword();
+  }
+
   const wantsUpper = confirm("Do you want UPPERCASE characters?");
   const wantsLower = confirm("Do you want lowercase characters?");
   const wantsSpecial = confirm("Do you want Special characters?");
@@ -29,6 +35,8 @@ function writePassword() {
   passwordText.value = password;
 
 }
+
+
 
 function generatePassword(length, lower, upper, special, number) {
 
