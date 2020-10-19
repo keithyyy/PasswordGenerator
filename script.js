@@ -11,8 +11,8 @@ const passwordSpecial = '';
 function writePassword() {
   const passLength = prompt("How long would you like your password to be? :");
 
-  if (passLength < 8 || passLength > 28) {
-    alert("Password has to be within 8 - 28 characters");
+  if (passLength < 8 || passLength > 128) {
+    alert("Password has to be within 8 - 128 characters");
     writePassword();
   }
 
