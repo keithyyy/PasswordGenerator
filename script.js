@@ -9,16 +9,37 @@ const passwordSpecial = '';
 
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
+  const passLength = prompt("How long would you like your password to be? :");
+
+  if (passLength < 8 || passLength > 128) {
+    alert("Password has to be within 8 - 128 characters");
+    writePassword();
+  }
+
+  const wantsUpper = confirm("Do you want UPPERCASE characters?");
+  const wantsLower = confirm("Do you want lowercase characters?");
+  const wantsSpecial = confirm("Do you want Special characters?");
+  const wantsNumber = confirm("Do you want numbers?");
+
+
+  const passCriteria = [wantsLower, wantsUpper, wantsSpecial, wantsNumber];
+
+  const criteriaArray = [{wantsLower}, {wantsUpper}, {wantsSpecial}, {wantsNumber}]
+
+  console.log(passCriteria);
+  console.log(criteriaArray);
+
+  var password = generatePassword(passLength, wantsLower, wantsUpper, wantsSpecial, wantsNumber);
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
 
 }
 
-function generatePassword() {
-  
-  
+
+
+function generatePassword(length, lower, upper, special, number) {
+
 }
 
 const randomGen = {
@@ -49,7 +70,6 @@ function getRandomSpecial() {
   return specialChar[Math.floor(Math.random() * specialChar.length)]
 }
 
-console.log(getRandomSpecial())
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
