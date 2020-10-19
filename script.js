@@ -38,7 +38,8 @@ function writePassword() {
 
 function generatePassword(upper, lower, special, number, length) {
   
-  let passwordgenerated = '';
+  let generatedPassword = '';
+
   const criteriaCount = upper + lower + special + number;
 
   // if a response is false, then we don't want to include it in array of password criteria to follow.
@@ -57,11 +58,13 @@ function generatePassword(upper, lower, special, number, length) {
       const criteriaKind = Object.keys(type)[0];
       console.log(criteriaKind);
 
-      passwordgenerated += randomGen[criteriaKind]();
+      generatedPassword += randomGen[criteriaKind]();
     });
     
   }
-  console.log(passwordgenerated)
+
+  return generatedPassword;
+  
 }
 
 
